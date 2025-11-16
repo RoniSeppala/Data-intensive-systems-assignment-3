@@ -31,8 +31,22 @@ export default async function fillDataDB2(models) {
 
     const contents = await Content.insertMany([...SHARED_CONTENT, ...uniqueDB2Content]);
 
+    const sharedSubscriptions = [
+        { userId: null, planName: "Standard", pricePerMonth: 9.99, isActive: true },
+        { userId: null, planName: "Premium", pricePerMonth: 14.99, isActive: true },
+        { userId: null, planName: "Basic", pricePerMonth: 5.99, isActive: false },
+        { userId: null, planName: "Standard", pricePerMonth: 9.99, isActive: true },
+        { userId: null, planName: "Premium", pricePerMonth: 14.99, isActive: false }
+    ];
+
     let subscriptions = [];
     for (let i = 0; i < users.length; i++) {
+        if (i < 5) {
+            const sub = { ...sharedSubscriptions[i] };
+            sub.userId = users[i]._id;
+            subscriptions.push(sub);
+            continue;
+        }
         const user = users[i];
         subscriptions.push({
             userId: user._id,
@@ -45,8 +59,23 @@ export default async function fillDataDB2(models) {
     }
     await Subscription.insertMany(subscriptions);
 
+        const sharedRatings = [
+        { userId: null, contentId: null, liked: true, comment: "Loved it!" },
+        { userId: null, contentId: null, liked: true, comment: "Pretty good." },
+        { userId: null, contentId: null, liked: false, comment: "Not my style." },
+        { userId: null, contentId: null, liked: true, comment: "Great series." },
+        { userId: null, contentId: null, liked: false, comment: "Too scary." }
+    ];
+
     let ratings = [];
     for (let i = 0; i < users.length; i++) {
+        if (i < 5) {
+            const rate = { ...sharedRatings[i] };
+            rate.userId = users[i]._id;
+            rate.contentId = contents[i]._id;
+            ratings.push(rate);
+            continue;
+        }
         const user = users[i];
         const content = contents[i % contents.length]; // cycle through contents
         ratings.push({
@@ -59,8 +88,27 @@ export default async function fillDataDB2(models) {
     }
     await Rating.insertMany(ratings);
 
+    const now = new Date("2020-01-01T12:00:00Z"); //same time for all timestanps
+    const oneHour = 3600000; // milliseconds in one hour
+
     let watchHistories = [];
+
+        const sharedWatchHistory = [
+        { userId: null, contentId: null, startedAt: new Date(now.getTime() - oneHour * 10), finishedAt: new Date(now.getTime() - oneHour * 9) },
+        { userId: null, contentId: null, startedAt: new Date(now.getTime() - oneHour * 8), finishedAt: new Date(now.getTime() - oneHour * 7) },
+        { userId: null, contentId: null, startedAt: new Date(now.getTime() - oneHour * 6), finishedAt: new Date(now.getTime() - oneHour * 5) },
+        { userId: null, contentId: null, startedAt: new Date(now.getTime() - oneHour * 4), finishedAt: new Date(now.getTime() - oneHour * 3) },
+        { userId: null, contentId: null, startedAt: new Date(now.getTime() - oneHour * 2), finishedAt: new Date(now.getTime() - oneHour * 1) }
+    ];
+
     for (let i = 0; i < users.length; i++) {
+        if (i < 5) {
+            const wh = { ...sharedWatchHistory[i] };
+            wh.userId = users[i]._id;
+            wh.contentId = contents[i]._id;
+            watchHistories.push(wh);
+            continue;
+        }
         const user = users[i];
         const content = contents[(i + 1) % contents.length]; // offset cycle through contents
         watchHistories.push({
