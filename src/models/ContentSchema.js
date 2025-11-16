@@ -9,6 +9,4 @@ const contentSchema = new mongoose.Schema({
     ageRating: { type: String, required: true },
 });
 
-const Content = mongoose.model("Content", contentSchema);
-
-export default Content;
+export default contentSchema

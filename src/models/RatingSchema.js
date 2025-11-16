@@ -8,6 +8,4 @@ const ratingSchema = new mongoose.Schema({
     ratedAt: { type: Date, default: Date.now }
 });
 
-const Rating = mongoose.model("Rating", ratingSchema);
-
-export default Rating;
+export default ratingSchema

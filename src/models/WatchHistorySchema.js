@@ -6,3 +6,5 @@ const watchHistorySchema = new mongoose.Schema({
     startedAt: { type: Date, default: Date.now },
     finishedAt: { type: Date }
 });
+
+export default watchHistorySchema

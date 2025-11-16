@@ -9,6 +9,4 @@ const subscriptionSchema = new mongoose.Schema({
     endsAt: { type: Date }
 });
 
-const Subscription = mongoose.model("Subscription", subscriptionSchema);
-
-export default Subscription;
+export default subscriptionSchema
