@@ -1,5 +1,20 @@
 # Data-intensive CT80A0000 Assignment 3 Repository, Roni Seppälä
 
+## Project
+This project demos only the following:
+- 3 databases (1 point each)
+- databases containing the correct ammount of data (3 points)
+
+### How to run
+- mirror the project folder
+- install mongoDB and a mongoDB viewing tool of your choise
+- run "npm install" in the root of the project
+- run "npm run start" in the root of the project
+This generates the data into 3 different databases in "mongodb://localhost:27017/"
+Use the mongoDB viewing tool of your choise to check the data
+
+### Demo video link
+
 ## Structure
 The demo has three different mongoDB databases made in using mongoose
 
