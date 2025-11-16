@@ -5,6 +5,7 @@ The demo has three different mongoDB databases made in using mongoose
 
 The tables in the databases are inspired by a movie streaming website and include
 1. User
+
 |Field       |Type     |Extra      |
 |------------|---------|-----------|
 |fullName    |String   |Required   |
@@ -12,6 +13,7 @@ The tables in the databases are inspired by a movie streaming website and includ
 |city        |String   |Required   |
 |createdAt   |Date     |           |
 2. Content
+
 |Field       |Type     |Extra      |
 |------------|---------|-----------|
 |title       |String   |Required   |
@@ -21,6 +23,7 @@ The tables in the databases are inspired by a movie streaming website and includ
 |durationMin |Number   |Required   |
 |ageRating   |String   |Reqiured   |
 3. Subscription
+
 |Field       |Type     |Extra      |
 |------------|---------|-----------|
 |userId        |ObjectId |Required   |
@@ -30,6 +33,7 @@ The tables in the databases are inspired by a movie streaming website and includ
 |startedAt     |Date     |           |
 |endsAt        |Date     |           |
 4. Rating
+
 |Field       |Type     |Extra      |
 |------------|---------|-----------|
 |userId      |ObjectId |Required   |
@@ -38,6 +42,7 @@ The tables in the databases are inspired by a movie streaming website and includ
 |comment     |String   |           |
 |ratedAt     |Date     |           |
 5. WatchHistory
+
 |Field       |Type     |Extra      |
 |------------|---------|-----------|
 |userId      |ObjectId |Required   |
