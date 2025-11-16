@@ -13,8 +13,6 @@ This project demos only the following:
 This generates the data into 3 different databases in "mongodb://localhost:27017/"
 Use the mongoDB viewing tool of your choise to check the data
 
-### Demo video link
-
 ## Structure
 The demo has three different mongoDB databases made in using mongoose
 
