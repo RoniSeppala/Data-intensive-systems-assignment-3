@@ -1,6 +1,6 @@
-import { SHARED_CONTENT, SHARED_USERS } from "./dataShared";
+import { SHARED_CONTENT, SHARED_USERS } from "./dataShared.js";
 
-export async function fillDataDB2(models) {
+export default async function fillDataDB2(models) {
     const { User, Content, Subscription, Rating, WatchHistory } = models;
 
     await Promise.all([ //clears existing data
@@ -22,11 +22,11 @@ export async function fillDataDB2(models) {
     const users = await User.insertMany([...SHARED_USERS, ...uniqueDB2Users]);
 
     const uniqueDB2Content = [
-        { title: "DB2 Regional Movie 1", contentType: "movie", genre: "Regional", year: 2022, durationMinutes: 102, ageRating: "12" },
-        { title: "DB2 Regional Movie 2", contentType: "movie", genre: "Regional", year: 2023, durationMinutes: 108, ageRating: "16" },
-        { title: "DB2 Regional Series 1", contentType: "series", genre: "Regional", year: 2024, durationMinutes: 42, ageRating: "12" },
-        { title: "DB2 Regional Series 2", contentType: "series", genre: "Regional", year: 2025, durationMinutes: 48, ageRating: "16" },
-        { title: "DB2 Regional Movie 3", contentType: "movie", genre: "Regional", year: 2026, durationMinutes: 93, ageRating: "7" }
+        { title: "DB2 Regional Movie 1", contentType: "movie", genre: "Regional", year: 2022, durationMin: 102, ageRating: "12" },
+        { title: "DB2 Regional Movie 2", contentType: "movie", genre: "Regional", year: 2023, durationMin: 108, ageRating: "16" },
+        { title: "DB2 Regional Series 1", contentType: "series", genre: "Regional", year: 2024, durationMin: 42, ageRating: "12" },
+        { title: "DB2 Regional Series 2", contentType: "series", genre: "Regional", year: 2025, durationMin: 48, ageRating: "16" },
+        { title: "DB2 Regional Movie 3", contentType: "movie", genre: "Regional", year: 2026, durationMin: 93, ageRating: "7" }
     ];
 
     const contents = await Content.insertMany([...SHARED_CONTENT, ...uniqueDB2Content]);

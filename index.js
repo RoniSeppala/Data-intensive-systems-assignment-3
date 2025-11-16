@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
 //models
-import contentSchema from "./src/models/ContentSchema";
-import RatingSchema from "./src/models/RatingSchema";
-import userSchema from "./src/models/UserSchema";
-import subscriptionSchema from "./src/models/SubscriptionSchema";
-import watchHistorySchema from "./src/models/WatchHistorySchema";
+import contentSchema from "./src/models/ContentSchema.js";
+import RatingSchema from "./src/models/RatingSchema.js";
+import userSchema from "./src/models/UserSchema.js";
+import subscriptionSchema from "./src/models/SubscriptionSchema.js";
+import watchHistorySchema from "./src/models/WatchHistorySchema.js";
 
 //datafills
-import fillDemoDB1 from "./src/datafills/fillDemoDB1";
-import fillDemoDB2 from "./src/datafills/fillDemoDB2";
-import fillDemoDB3 from "./src/datafills/fillDemoDB3";
+import fillDemoDB1 from "./src/datafill/datafillDB1.js";
+import fillDemoDB2 from "./src/datafill/datafillDB2.js";
+import fillDemoDB3 from "./src/datafill/datafillDB3.js";
 
 //connect to multiple databases
 const dbUris = {
@@ -55,14 +55,7 @@ async function connectToDatabases() {
     return { connections, modelsByDb };
 }
 
-// Verify all connections are established
-if (!connections.demoDB1 || !connections.demoDB2 || !connections.demoDB3) {
-    console.error("One or more database connections failed.");
-    process.exit(1);
-}
-
 //fill databases with initial data
-
 async function initializeDatabases() {
     const { connections, modelsByDb } = await connectToDatabases();
 

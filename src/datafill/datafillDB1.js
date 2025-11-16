@@ -1,6 +1,6 @@
-import { SHARED_CONTENT, SHARED_USERS } from "./dataShared";
+import { SHARED_CONTENT, SHARED_USERS } from "./dataShared.js";
 
-export async function fillDataDB1(models) {
+export default async function fillDataDB1(models) {
     const { User, Content, Subscription, Rating, WatchHistory } = models;
 
     await Promise.all([ //clears existing data
@@ -22,11 +22,11 @@ export async function fillDataDB1(models) {
     const users = await User.insertMany([...SHARED_USERS, ...uniqueDB1Users]);
 
     const uniqueDB1Content = [
-        { title: "DB1 Movie A", contentType: "movie", genre: "Thriller", year: 2022, durationMinutes: 130, ageRating: "16" },
-        { title: "DB1 Series B", contentType: "series", genre: "Fantasy", year: 2021, durationMinutes: 50, ageRating: "12" },
-        { title: "DB1 Movie C", contentType: "movie", genre: "Animation", year: 2020, durationMinutes: 90, ageRating: "7" },
-        { title: "DB1 Series D", contentType: "series", genre: "Documentary", year: 2019, durationMinutes: 40, ageRating: "All" },
-        { title: "DB1 Movie E", contentType: "movie", genre: "Comedy", year: 2018, durationMinutes: 115, ageRating: "12" }
+        { title: "DB1 Movie A", contentType: "movie", genre: "Thriller", year: 2022, durationMin: 130, ageRating: "16" },
+        { title: "DB1 Series B", contentType: "series", genre: "Fantasy", year: 2021, durationMin: 50, ageRating: "12" },
+        { title: "DB1 Movie C", contentType: "movie", genre: "Animation", year: 2020, durationMin: 90, ageRating: "7" },
+        { title: "DB1 Series D", contentType: "series", genre: "Documentary", year: 2019, durationMin: 40, ageRating: "All" },
+        { title: "DB1 Movie E", contentType: "movie", genre: "Comedy", year: 2018, durationMin: 115, ageRating: "12" }
     ];
 
     const contents = await Content.insertMany([...SHARED_CONTENT, ...uniqueDB1Content]);
